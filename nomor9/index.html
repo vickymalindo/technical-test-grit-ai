@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .username,
+      .password,
+      .btn-login {
+        display: block;
+      }
+      .username.inactive,
+      .password.inactive,
+      .btn-login.inactive {
+        display: none;
+      }
+      .btn-logout,
+      .welcome {
+        display: none;
+      }
+      .btn-logout.active,
+      .welcome.active {
+        display: block;
+      }
+    </style>
+    <title>Jawaban No. 9</title>
+  </head>
+  <body>
+    <input type="text" class="username" />
+    <input type="password" class="password" />
+    <button class="btn-login">login</button>
+    <label class="welcome">Selamat Datang,</label>
+    <button class="btn-logout">logout</button>
+
+    <script>
+      const username = document.querySelector('.username');
+      const password = document.querySelector('.password');
+      const btnLogin = document.querySelector('.btn-login');
+      const btnLogout = document.querySelector('.btn-logout');
+      const welcome = document.querySelector('.welcome');
+
+      btnLogin.addEventListener('click', () => {
+        const data = {
+          username: username.value,
+          password: password.value,
+        };
+        localStorage.setItem('data', JSON.stringify(data));
+        username.classList.add('inactive');
+        password.classList.add('inactive');
+        btnLogin.classList.add('inactive');
+        const getData = localStorage.getItem('data');
+        const dataParse = JSON.parse(getData);
+        welcome.innerText += ' ' + dataParse.username;
+        btnLogout.classList.add('active');
+        welcome.classList.add('active');
+      });
+
+      btnLogout.addEventListener('click', () => {
+        localStorage.clear();
+        username.value = '';
+        password.value = '';
+        username.classList.remove('inactive');
+        password.classList.remove('inactive');
+        btnLogin.classList.remove('inactive');
+        btnLogout.classList.remove('active');
+        welcome.classList.remove('active');
+      });
+    </script>
+  </body>
+</html>

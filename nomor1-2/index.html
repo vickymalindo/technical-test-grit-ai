@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jawaban nomor 1 sampai 2</title>
+  </head>
+  <body>
+    <!-- Soal No. 2 -->
+    <label class="label">Ini sebelum dirubah</label>
+    <button class="btn">klik</button>
+
+    <script>
+      // Soal No. 1
+      const jsonObj = {
+        label1: 'Ini adalah label1',
+        label2: 'Ini adalah label2',
+      };
+
+      // Soal No. 2
+      const label = document.querySelector('.label');
+      const btn = document.querySelector('.btn');
+      btn.addEventListener('click', () => {
+        label.innerHTML = jsonObj.label1;
+      });
+    </script>
+  </body>
+</html>
